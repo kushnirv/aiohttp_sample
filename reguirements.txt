@@ -1,0 +1,7 @@
+motor==2.0.0
+aiohttp==3.5.4
+pytest
+pytest-aiohttp
+aiohttp_swagger
+
+python-dotenv

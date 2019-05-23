@@ -1,0 +1,134 @@
+swagger: '2.0'
+info:
+  description: description
+  version: 1.0.0
+  title: Swagger Petstore
+schemes:
+  - https
+  - http
+paths:
+  /nodes:
+    post:
+      tags:
+        - Nodes
+      summary: Добавление новой вершины
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          required: true
+          schema:
+            type: object
+            properties:
+              _id:
+                type: string
+              text:
+                type: string
+      responses:
+        '201':
+          description: Tree has been add
+        '405':
+          description: Invalid Input
+    delete:
+      tags:
+        - Nodes
+      summary: Удаление вершины
+      parameters:
+        - in: body
+          name: body
+          required: true
+          schema:
+            type: object
+            properties:
+              _id:
+                type: string
+      responses:
+        '200':
+          description: OK
+        '405':
+          description: Invalid Input
+  /nodes/move:
+    post:
+      tags:
+        - Nodes
+      summary: Перемещение вершины
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          required: true
+          schema:
+            type: object
+            properties:
+              new_root_id:
+                type: string
+              _id:
+                type: string
+      responses:
+        '200':
+          description: OK
+        '405':
+          description: Invalid Input
+  '/trees/{_id}':
+    get:
+      tags:
+        - Trees
+      summary: Получение поддерева по id вершины
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: _id
+          type: string
+          required: true
+      responses:
+        '200':
+          description: OK
+        '405':
+          description: Invalid Input
+  '/trees/{_id}/child':
+    get:
+      tags:
+        - Trees
+      summary: Получение детей по id вершины
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: _id
+          type: string
+          required: true
+      responses:
+        '200':
+          description: OK
+        '405':
+          description: Invalid Input
+  '/tree/{_id}/path':
+    get:
+      tags:
+        - Trees
+      summary: Получение поддерева по id вершины
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: _id
+          type: string
+          required: true
+      responses:
+        '200':
+          description: OK
+        '405':
+          description: Invalid Input
